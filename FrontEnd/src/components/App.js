@@ -1,6 +1,6 @@
 import { useEffect} from 'react';
 import noteStore from '../stores/noteStore';
-import Note from './Note';
+import Notes from './Notes';
 import CreateNoteForm from './CreateNoteForm';
 import UpdateNoteForm from './UpdateNoteForm';
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <Note/>
+      <Notes/>
       <UpdateNoteForm/>
       <CreateNoteForm/>
     </>
