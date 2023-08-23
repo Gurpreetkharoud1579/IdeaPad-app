@@ -17,7 +17,7 @@ const noteStore = create((set) => ({
     fetchNotes: async () => {
         // get notes from api
         try {
-            const response = await axios.get('http://localhost:3000/notes');
+            const response = await axios.get('/notes');
             const notes = response.data.notes;
             //   setNotes(notes);
             set({
@@ -25,7 +25,7 @@ const noteStore = create((set) => ({
             })
 
         } catch (error) {
-            console.error('Error fetching the data'.error);
+            console.error('Error fetching the data',error);
         }
     },
     setFormData: (e) => {
@@ -45,7 +45,7 @@ const noteStore = create((set) => ({
             // get state noteFormDate
             const { noteFormData, notes } = noteStore.getState();
             // create new note
-            const res = await axios.post('http://localhost:3000/notes', noteFormData);
+            const res = await axios.post('/notes', noteFormData);
             // clear form fields and
             // set notes with addition of new note
             set({
@@ -65,7 +65,7 @@ const noteStore = create((set) => ({
             // get notes from state
             const { notes } = noteStore.getState();
             // delete the note
-            await axios.delete(`http://localhost:3000/notes/${_id}`);
+            await axios.delete(`/notes/${_id}`);
             // update state
             set({
                 notes: notes.filter((note) => { return note._id !== _id })
@@ -101,7 +101,7 @@ const noteStore = create((set) => ({
         const { title, _id, body } = noteUpdateFormData;
         try {
             // update note 
-            await axios.put(`http://localhost:3000/notes/${_id}`, { title: title, body: body });
+            await axios.put(`/notes/${_id}`, { title: title, body: body });
 
             // update state
             const newNotes = [...notes];
