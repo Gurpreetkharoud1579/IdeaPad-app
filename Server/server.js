@@ -39,15 +39,15 @@ app.get('/logout', usersController.logout);
 app.get('/check-auth', requireAuth,usersController.checkAuth);
 
 // get all notes
-app.get('/notes', fetchNotes );
+app.get('/notes',requireAuth, fetchNotes );
 // get the specific note
-app.get('/notes/:id' , fetchNoteById );
+app.get('/notes/:id' ,requireAuth, fetchNoteById );
 // create a new note
-app.post('/notes' ,createNote);
+app.post('/notes' ,requireAuth,createNote);
 // update note
-app.put('/notes/:id', updateNote);
+app.put('/notes/:id', requireAuth,updateNote);
 // delete specific note
-app.delete('/notes/:id', deleteNote);
+app.delete('/notes/:id',requireAuth, deleteNote);
 
 
 // Start our sever at a specific port

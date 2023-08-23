@@ -4,7 +4,7 @@ const Note = require('../models/note');
 const fetchNotes = async (req, res) => {
     try {
       // Find all notes
-      const notes = await Note.find();
+      const notes = await Note.find({user: req.user._id});
   
       // Respond with all notes
       res.status(200).json({ notes: notes });
@@ -21,7 +21,7 @@ const fetchNotes = async (req, res) => {
       const noteId = req.params.id;
   
       // Find a note by its ID
-      const note = await Note.findById(noteId);
+      const note = await Note.findOne({_id : noteId, user : req.user._id});
   
       if (!note) {
         // If the note with the given ID is not found, return a 404 status
@@ -36,7 +36,6 @@ const fetchNotes = async (req, res) => {
       res.status(500).json({ error: 'An error occurred' });
     }
   };
-  
 
 const createNote = async (req, res) => {
     try {
@@ -52,6 +51,7 @@ const createNote = async (req, res) => {
       const note = await Note.create({
         title: title,
         body: body,
+        user: req.user._id,
       });
   
       // Fetch the created note
@@ -81,7 +81,7 @@ const updateNote = async (req, res) => {
       }
   
       // Update the note with a specific id
-      const updateResult = await Note.findByIdAndUpdate(noteId, {
+      const updateResult = await Note.findOneAndUpdate({_id: noteId, user: req.user._id }, {
         title: title,
         body: body,
       });
@@ -109,7 +109,7 @@ const deleteNote = async (req, res) => {
       const noteId = req.params.id;
   
       // Delete the note with the specific id
-      const deletionResult = await Note.deleteOne({ _id: noteId });
+      const deletionResult = await Note.deleteOne({ _id: noteId, user: req.user._id });
   
       if (deletionResult.deletedCount === 1) {
         // Note was successfully deleted
