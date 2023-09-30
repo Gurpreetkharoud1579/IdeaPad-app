@@ -47,7 +47,7 @@ app.post('/notes' ,requireAuth,createNote);
 // update note
 app.put('/notes/:id', requireAuth,updateNote);
 // delete specific note
-app.delete('/notes/:id',requireAuth, deleteNote);
+app.delete('/notes/:id', requireAuth, deleteNote);
 
 
 // Start our sever at a specific port

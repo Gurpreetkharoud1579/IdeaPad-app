@@ -1,19 +1,15 @@
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotesPage from "../pages/NotesPage";
 import LoginPage from "../pages/LoginPage";
 import RequireAuth from "./RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
+import Navbar from "./Navbar";
 
 function App() {
   return (
     <BrowserRouter>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/signup">Signup</Link></li>
-        <li><Link to="/logout">Logout</Link></li>
-      </ul>
+      <Navbar/>
       <Routes>
         <Route index element={<RequireAuth> <NotesPage /></RequireAuth> } />
         <Route path="/login" element={<LoginPage />} />

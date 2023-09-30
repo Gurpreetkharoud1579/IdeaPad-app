@@ -1,11 +1,13 @@
 import noteStore from '../stores/noteStore';
 import Note from './Note';
+import '../styles/index.css';
+
 function Notes() {
     // store 
     const store = noteStore();
     return (
         <>
-            <div><h1>My notes</h1></div>
+            <div className='txt-center'><h1>My notes</h1></div>
             {
                 store.notes && store.notes.map((note) => {
                     return (
