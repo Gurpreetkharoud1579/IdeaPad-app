@@ -15,6 +15,7 @@ function CreateNoteForm() {
                   value={store.noteFormData.title}
                   onChange={store.setFormData}
                   type="text"
+                  id="createIdeaTitle"
                 />
                 <label htmlFor="body">Note Body</label>
                 <input
@@ -22,8 +23,9 @@ function CreateNoteForm() {
                   value={store.noteFormData.body}
                   onChange={store.setFormData}
                   type="text"
+                  id="createIdeaBody"
                 />
-                <button onClick={store.createNote} type="submit">
+                <button id="createIdeaBtn" onClick={store.createNote} type="submit">
                   Add
                 </button>
               </form>

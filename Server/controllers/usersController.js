@@ -60,6 +60,7 @@ async function login(req, res){
     
  
 };
+
 function logout(req, res){
     try {
         res.clearCookie("Authorization");
@@ -70,6 +71,7 @@ function logout(req, res){
     }
    
 }; 
+
 function checkAuth(req, res){
     // user we are getting from middleware after decoding it from cookie
     // console.log(req.user);
@@ -80,6 +82,7 @@ function checkAuth(req, res){
     }
     
 } 
+
 module.exports = {
     signup,
     login,

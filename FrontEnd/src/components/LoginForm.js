@@ -27,6 +27,7 @@ export default function LoginForm() {
           onChange={store.updateLoginForm}
           type="text"
           name="email"
+          id= "loginEmail"
         />
         <label htmlFor="password">Password</label>
         <input
@@ -34,8 +35,9 @@ export default function LoginForm() {
           onChange={store.updateLoginForm}
           type="password"
           name="password"
+          id= "loginPassword"
         />
-        <button type="submit">Login</button>
+        <button  id ="loginBtn"type="submit">Login</button>
       </form>
     </div>
   );

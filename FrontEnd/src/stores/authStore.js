@@ -27,28 +27,36 @@ const authStore = create((set) => ({
         })
     },
     login: async () => {
-        // get email and password from state 
-        const { loginForm } = authStore.getState();
-
         try {
-            // call api for login
-            await axios.post('/login', loginForm);
-            // clear the state
-            set((state) => {
-                return {
-                    loginForm: {
-                        email: '',
-                        password: ''
-                    },
-                    loggedIn: true
-                }
-            });
-
+            const { loginForm } = authStore.getState();
+    
+            // Ensure that both email and password are provided
+            if (!loginForm.email || !loginForm.password) {
+                alert('Please provide both email and password');
+                return;
+            }
+    
+            // Call the login API
+            const response = await axios.post('/login', loginForm);
+    
+            if (response.status === 200) {
+                // Clear the state and mark the user as logged in
+                set((state) => {
+                    return {
+                        loginForm: {
+                            email: '',
+                            password: ''
+                        },
+                        loggedIn: true
+                    };
+                });
+            } else {
+                alert('Wrong Email or Password');
+            }
         } catch (error) {
-            alert('Wrong Email or Password');
             console.log(error);
+            alert('An error occurred during login');
         }
-
     },
     // check if session have authorization
     checkAuth: async () => {
@@ -98,19 +106,6 @@ const authStore = create((set) => ({
 
         } catch (error) {
             console.log(error);
-        }
-
-
-    },
-    logout: async () => {
-        try {
-            await axios.get('/logout');
-            set({
-                loggedIn:false,
-            })
-
-        } catch (error) {
-
         }
     }
 }))

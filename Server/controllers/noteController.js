@@ -66,7 +66,6 @@ const createNote = async (req, res) => {
     }
   };
   
-
 const updateNote = async (req, res) => {
     try {
       // Get the id from the URL
@@ -102,7 +101,6 @@ const updateNote = async (req, res) => {
     }
   };
   
-
 const deleteNote = async (req, res) => {
     try {
       // Get the id from the URL

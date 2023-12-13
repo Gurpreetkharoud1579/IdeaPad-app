@@ -26,6 +26,7 @@ export default function SignupForm() {
         <input
           value={store.signupForm.email}
           onChange={store.updateSignupForm}
+          id="signUpEmail"
           type="text"
           name="email"
         />
@@ -33,10 +34,11 @@ export default function SignupForm() {
         <input
           value={store.signupForm.password}
           onChange={store.updateSignupForm}
+          id="signUpPassword"
           type="password"
           name="password"
         />
-        <button type="submit">Signup</button>
+        <button id="signUpBtn" type="submit">Signup</button>
       </form>
     </div>
   );
