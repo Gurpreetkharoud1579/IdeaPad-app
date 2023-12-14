@@ -13,12 +13,12 @@ function NotesPage() {
   }, [])
 
   return (
-    <div className='flex flex-row w-full'>
-    <div className='w-[40%]'>
+    <div className='flex flex-col w-full lg:flex-row '>
+    <div className='w-[40%] mx-auto'>
       <CreateNoteForm  />
       <UpdateNoteForm />
       </div>
-      <div className='flex flex-col w-[60%]'>
+      <div className='flex flex-col w-[60%] mx-auto'>
     <h1 className="text-2xl p-2 font-bold text-center  text-black">List of All Notes</h1>
 
       <Notes/>
