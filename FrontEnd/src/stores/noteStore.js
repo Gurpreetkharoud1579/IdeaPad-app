@@ -117,8 +117,10 @@ const noteStore = create((set) => ({
 
         }
     },
-    canceUpdateNote: () => {
+    canceUpdateNote: (e) => {
+        e.preventDefault();
         set({
+            
             noteUpdateFormData: { title: '', body: '', _id: null }
         })
     }

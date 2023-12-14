@@ -7,7 +7,6 @@ function Notes() {
     const store = noteStore();
     return (
         <>
-            <div className='txt-center'><h1>My notes</h1></div>
             {
                 store.notes && store.notes.map((note) => {
                     return (
