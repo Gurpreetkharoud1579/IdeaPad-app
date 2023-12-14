@@ -5,6 +5,7 @@ import RequireAuth from "./RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
 import Navbar from "./Navbar";
+import './App.css'
 
 function App() {
   return (
